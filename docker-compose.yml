@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  db_postgres:
+    image: postgres:14
+    env_file:
+      - backend_investsphere/.env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  
+  django_app:
+    build: .
+    volumes:
+      - static:/code/static
+      - .:/code
+    depends_on:
+      - db_postgres
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - 8000:80
+    volumes:
+      - ./config/nginx/conf.d:/etc/nginx/conf.d
+      - static:/code/static
+    
+volumes:
+  .:
+  postgres_data:
+  static:

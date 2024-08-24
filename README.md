@@ -1,13 +1,12 @@
-
 # Investsphere API
 
 [![Python](https://img.shields.io/badge/python-3.12.2-3776AB.svg)](https://www.python.org/downloads/release/python-3122/)
-[![FastAPI](https://img.shields.io/badge/FastApi-0.111.0-009485.svg)](https://reflex.dev/)
+[![Django](https://img.shields.io/badge/Django-4.2.3-092E20.svg)](https://www.djangoproject.com/)
 
-## FastAPI System for Managing Personal Investments
+## Django System for Managing Personal Investments
 
 ### Description
-Backend system developed with FastAPI for managing personal investments. The system includes the following features:
+Backend system developed with Django for managing personal investments. The system includes the following features:
 
 ### Roadmap
 [ ] User registration and authentication  
@@ -33,10 +32,14 @@ cd investsphere_api
 
 # create virtual environment
 python -m venv .venv
+source .venv/bin/activate  # On Windows use `.venv\Scripts\activate`
 
-# install fastapi
+# install Django
 pip install -r requirements.txt
 
+# apply migrations
+python manage.py migrate
+
 # start development server
-uvicorn main:app --reload
+python manage.py runserver
 ```

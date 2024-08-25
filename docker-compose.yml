@@ -20,11 +20,23 @@ services:
     image: nginx:latest
     ports:
       - 80:80
+      - 443:443
     volumes:
       - ./config/nginx/conf.d:/etc/nginx/conf.d
       - static:/code/static
+      - certbot_certs:/etc/letsencrypt
+      - certbot_challenges:/var/www/certbot
+    depends_on:
+      - django_app
+
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - certbot_certs:/etc/letsencrypt
+      - certbot_challenges:/var/www/certbot
     
 volumes:
-  .:
   postgres_data:
   static:
+  certbot_certs:
+  certbot_challenges:

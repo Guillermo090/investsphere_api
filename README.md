@@ -43,3 +43,9 @@ python manage.py migrate
 # start development server
 python manage.py runserver
 ```
+
+## Get certbot certificates
+```bash
+# run the certbot container with your domain name as an argument
+docker-compose run --rm certbot certonly --webroot --webroot-path=/var/www/certbot -d api.investsphere.cl
+```

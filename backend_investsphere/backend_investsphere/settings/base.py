@@ -12,7 +12,7 @@ dotenv_path = BASE_DIR / '.env'
 load_dotenv(dotenv_path)
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-e2*%cy4nxw#^89etb&3kkn63m@@d(-a21s+&xf52waoi$29)x='
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 
 # Application definition
@@ -132,6 +132,6 @@ SIMPLE_JWT = {
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True,
     'ALGORITHM': 'HS256',
-    'SIGNING_KEY': SECRET_KEY,  # Cambia esto por una clave secreta segura
+    'SIGNING_KEY': SECRET_KEY,
     'AUTH_HEADER_TYPES': ('Bearer',),
 }

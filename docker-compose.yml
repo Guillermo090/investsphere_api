@@ -24,19 +24,21 @@ services:
     volumes:
       - ./config/nginx/conf.d:/etc/nginx/conf.d
       - static:/code/static
-      - certs:/etc/nginx/certs
-      - ./config/certbot/www:/var/www/certbot
+      - certbot_certs:/etc/letsencrypt
+      - certbot_challenges:/var/www/certbot
     depends_on:
       - django_app
 
   certbot:
     image: certbot/certbot
     volumes:
-      - certs:/etc/letsencrypt
-      - ./config/certbot/www:/var/www/certbot
-    entrypoint: /bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'
+      - certbot_certs:/etc/letsencrypt
+      - certbot_challenges:/var/www/certbot
+    depends_on:
+      - nginx
 
 volumes:
   postgres_data:
   static:
-  certs:
+  certbot_certs:
+  certbot_challenges:

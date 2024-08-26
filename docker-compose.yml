@@ -24,7 +24,6 @@ services:
     volumes:
       - ./config/nginx/conf.d:/etc/nginx/conf.d
       - static:/code/static
-      - certbot_certs:/etc/letsencrypt
       - certbot_challenges:/var/www/certbot
     depends_on:
       - django_app

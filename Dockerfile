@@ -8,4 +8,4 @@ COPY . /code/
 
 RUN pip install -r requirements.txt
 
-CMD ["gunicorn", "-c", "config/gunicorn/conf.py", "--bind", ":8000", "--chdir", "investsphere_api", "investsphere_api.wsgi:application"]
+CMD ["gunicorn", "-c", "config/gunicorn/conf.py", "--bind", ":8000", "investsphere_api.wsgi:application"]

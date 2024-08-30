@@ -5,7 +5,7 @@ DEBUG = False
 ALLOWED_HOSTS = ['*']
 X_FRAME_OPTIONS = 'ALLOWALL'
 XS_SHARING_ALLOWED_METHODS = ['POST','GET','OPTIONS', 'PUT', 'DELETE']
-WSGI_APPLICATION = 'backend_investsphere.wsgi.application'
+WSGI_APPLICATION = 'investsphere_api.wsgi.application'
 CORS_ORIGIN_ALLOW_ALL = True
 
 DATABASES = {

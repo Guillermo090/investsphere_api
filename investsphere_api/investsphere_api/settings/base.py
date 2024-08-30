@@ -49,7 +49,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-ROOT_URLCONF = 'backend_investsphere.urls'
+ROOT_URLCONF = 'investsphere_api.urls'
 
 TEMPLATES = [
     {
@@ -67,7 +67,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'backend_investsphere.wsgi.application'
+WSGI_APPLICATION = 'investsphere_api.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases

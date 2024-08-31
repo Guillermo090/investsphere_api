@@ -49,3 +49,20 @@ python manage.py runserver
 # run the certbot container with your domain name as an argument
 docker-compose run --rm certbot certonly --webroot --webroot-path=/var/www/certbot -d api.investsphere.cl
 ```
+
+## Show docker containers whith pacefully format
+```bash
+ docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.CreatedAt}}\t{{.Status}}"
+```
+
+## Config server with the local timezone
+```bash
+#show disponible timezones 
+timedatectl list-timezones | grep Santiago
+
+#set timezone to Chile
+sudo timedatectl set-timezone America/Santiago
+
+#verify
+timedatectl
+```

@@ -15,6 +15,8 @@ services:
       - .:/code
     depends_on:
       - db_postgres
+    env_file:
+      - .env
 
   nginx:
     image: nginx:latest

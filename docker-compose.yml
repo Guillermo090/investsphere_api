@@ -13,6 +13,8 @@ services:
     volumes:
       - static:/code/static
       - .:/code
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
     depends_on:
       - db_postgres
     env_file:
@@ -23,6 +25,8 @@ services:
     command: celery -A investsphere_api worker --loglevel=info
     volumes:
       - .:/code
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
     depends_on:
       - db_postgres
       - redis
@@ -37,17 +41,25 @@ services:
       - .env
     depends_on:
       - redis
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
 
   redis:
     image: redis:latest
     ports:
       - 6379:6379
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
   
   celery_beat:
     build: .
     command: celery -A investsphere_api beat --loglevel=info
     volumes:
       - .:/code
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
     depends_on:
       - redis
     env_file:

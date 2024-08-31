@@ -18,6 +18,41 @@ services:
     env_file:
       - .env
 
+  celery:
+    build: .
+    command: celery -A investsphere_api worker --loglevel=info
+    volumes:
+      - .:/code
+    depends_on:
+      - db_postgres
+      - redis
+    env_file:
+      - .env
+
+  flower:
+    image: mher/flower
+    ports:
+      - "5555:5555"
+    env_file:
+      - .env
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:latest
+    ports:
+      - 6379:6379
+  
+  celery_beat:
+    build: .
+    command: celery -A investsphere_api beat --loglevel=info
+    volumes:
+      - .:/code
+    depends_on:
+      - redis
+    env_file:
+      - .env
+
   nginx:
     image: nginx:latest
     ports:

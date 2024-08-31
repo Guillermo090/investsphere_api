@@ -44,6 +44,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
+      - static:/code/static
 
   redis:
     image: redis:latest

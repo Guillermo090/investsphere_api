@@ -33,7 +33,8 @@ OTHERS_APPS = [
 ]
 
 LOCAL_APPS = [
-    'app_users'
+    'app_users',
+    'app_transactions'
 ]
 
 INSTALLED_APPS = BASE_APPS + OTHERS_APPS + LOCAL_APPS

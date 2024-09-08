@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import User
+from .models import User, Company
 
 
 class CustomUserAdmin(UserAdmin):
@@ -25,3 +25,10 @@ class CustomUserAdmin(UserAdmin):
 
 
 admin.site.register(User, CustomUserAdmin)
+
+
+@admin.register(Company)
+class CompanyAdmin(admin.ModelAdmin):
+    list_display = ('name', 'registration_date', 'status')
+    search_fields = ('name', 'status')
+    list_filter = ('name', 'status')
